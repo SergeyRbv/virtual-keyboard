@@ -113,7 +113,7 @@ let keyboardBtns = {
 const textarea = document.createElement("textarea");
 textarea.classList.add('textarea');
 document.body.appendChild(textarea);
-let lang = 'en';
+
 
 function handleKeyPress(key) {
   const textarea = document.querySelector("textarea");
@@ -146,13 +146,25 @@ function handleKeyPress(key) {
     }
   }
 
-  // Создаем дейсвтие смены языка
-document.addEventListener("keydown", function (event) {
-  if (event.shiftKey && event.altKey) {
-    toggleLanguage();
-    addLanguage();
+  // Смена языка
+  let lang = 'en';
+  document.addEventListener("keydown", function (event) {
+    if (event.shiftKey && event.altKey) {
+      toggleLang();
+      addLanguage();
+    }
+  });
+
+// Функция смены языка
+const toggleLang = () => {
+  if (language === "en") {
+    lang = "ru";
+  } else {
+    lang = "en";
   }
-});
+  localStorage.setItem("language", lang);
+  selectKeyboard();
+};
 
 
 // Создаем блок клавиатуры и блоки кнопок клавиатуры
@@ -171,6 +183,7 @@ const selectKeyboard = () => {
       const keyEl = document.createElement("div");
       keyEl.classList.add("key");
       keyEl.textContent = key;
+      keyEl.setAttribute('data-code', key);
       switch (key) {
         case "Backspace":
           keyEl.classList.add("backspace");
@@ -208,35 +221,51 @@ const selectKeyboard = () => {
 }
 selectKeyboard();
 
-const toggleLang = () => {
-  if (language === "en") {
-    language = "ru";
-  } else {
-    language = "en";
-  }
-  localStorage.setItem("language", language);
-  selectKeyboard();
-};
 
-// добавление и удаление класса для клавиш
+
+// Добавление и удаление класса для клавиш
 const keys = document.querySelectorAll(".key");
 
-keys.forEach(key => {
-  const code = key.textContent;
-  key.setAttribute('data', `${code}`);
-  // if (key.data === '') {
-  //   this.setAttribute('data', 'space')
-  // }
-});
+// keys.forEach(key => {
+//   const code = key.textContent;
+//   key.setAttribute('data', `${code}`);
+//   // if (key.data === '') {
+//   //   this.setAttribute('data', 'space')
+//   // }
+// });
+
 
 document.addEventListener('keydown', event => {
-  console.log(event.key)
-  keys.forEach(key => {
+  console.log(event.code)
+  const key = document.querySelector(`.key[data-code="${event.code}"]`);
+  if (key) {
+    key.classList.add('active');
+  }
+});
+document.addEventListener('keyup', event => {
+  const key = document.querySelector(`.key[data-code="${event.code}"]`);
+  if (key) {
     key.classList.remove('active');
-  });
-  document.querySelector('.key[data="' + event.key + '"]').classList.add('active');
+  }
 });
 
+// document.addEventListener('keydown', event => {
+//   console.log(event.key)
+//   keys.forEach(key => {
+//     key.classList.remove('active');
+//   });
+//   document.querySelector('.key[data="' + event.key + '"]').classList.add('active');
+// });
+
+
+// keys.forEach(key => {
+//   key.addEventListener('mousedown', () => {
+//     key.classList.add('active');
+//   });
+//   key.addEventListener('mouseup', () => {
+//     key.classList.remove('active');
+//   });
+// })
 keys.forEach(function (element) {
   element.onclick = function (element) {
     keys.forEach(function (element) {
@@ -245,6 +274,8 @@ keys.forEach(function (element) {
     this.classList.add("active");
   };
 });
+
+
 
 
 // document.onkeydown = function (event) {

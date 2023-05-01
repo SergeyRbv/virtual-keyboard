@@ -55,6 +55,12 @@
   transform: scale(.9);
 }
 
+/* Пример CSS-стилей для активной клавиши */
+.key.active {
+  background-color: #ccc;
+  transform: scale(.9);
+}
+
 .clearfix {
   display: block;
   width: 100%;
