@@ -51,7 +51,7 @@
 
 
 .active {
-  background-color: grey;
+  background-color: #ccc;
   transform: scale(.9);
 }
 
