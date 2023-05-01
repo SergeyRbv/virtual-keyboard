@@ -106,9 +106,6 @@ let keyboardBtns = {
   ],
 };
 
-
-
-
 // Создаем TextArea
 const textarea = document.createElement("textarea");
 textarea.classList.add('textarea');
@@ -166,7 +163,6 @@ const toggleLang = () => {
   selectKeyboard();
 };
 
-
 // Создаем блок клавиатуры и блоки кнопок клавиатуры
 const selectKeyboard = () => {
   const keyboard = document.createElement('div');
@@ -221,8 +217,6 @@ const selectKeyboard = () => {
 }
 selectKeyboard();
 
-
-
 // Добавление и удаление класса для клавиш
 const keys = document.querySelectorAll(".key");
 
@@ -233,7 +227,6 @@ const keys = document.querySelectorAll(".key");
 //   //   this.setAttribute('data', 'space')
 //   // }
 // });
-
 
 document.addEventListener('keydown', event => {
   console.log(event.code)
@@ -257,7 +250,6 @@ document.addEventListener('keyup', event => {
 //   document.querySelector('.key[data="' + event.key + '"]').classList.add('active');
 // });
 
-
 // keys.forEach(key => {
 //   key.addEventListener('mousedown', () => {
 //     key.classList.add('active');
@@ -266,6 +258,7 @@ document.addEventListener('keyup', event => {
 //     key.classList.remove('active');
 //   });
 // })
+
 keys.forEach(function (element) {
   element.onclick = function (element) {
     keys.forEach(function (element) {
@@ -274,118 +267,3 @@ keys.forEach(function (element) {
     this.classList.add("active");
   };
 });
-
-
-
-
-// document.onkeydown = function (event) {
-//   console.log(event.code);
-//   keys.forEach(function (element) {
-//     element.classList.remove("active");
-//   });
-//   event.classList.add("active");
-// };
-
-
-// function init() {
-//   let out = '';
-//   for (let i=0;i<keyboardBtns.length;i++) {
-//     if (i==12) {
-//       out += '<div class="clearfix"></div>';
-//     }
-//     if (i==23) {
-//       out += '<div class="clearfix"></div>';
-//     }
-//     out += '<div class="key" data="' + keyboardBtns[i] + '">' + keyboardBtns[i] + '</div>';
-//   }
-//   document.querySelector('#keyboard').innerHTML = out;
-// }
-// init();
-
-// document.onkeydown = function(event) {
-//  console.log(event.key); 
-//  document.querySelectorAll('.key').forEach(function(element){
-
-//  element.classList.remove('active');
-//  })
-
-//  document.querySelector('.key[data="' + event.key + '"]').classList.add('active');
-
-//  // Добавляем класс к элементу клавиши
-// };
-
-// const keyboardBtns = {
-//   en: [
-//     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-//     ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
-//     ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
-//     ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift'],
-//     ['Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Win', 'Ctrl']
-//   ],
-//   ru: [
-//     ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
-//     ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\'],
-//     ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
-//     ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Shift'],
-//     ['Ctrl', 'Win', 'Alt', ' ', 'Alt', 'Win', 'Ctrl']
-//   ]
-// };
-
-// const keyboard = document.getElementById('keyboard');
-// const inputField = document.getElementById('input-field');
-// let currentLanguage = 'en';
-// let capsLockEnabled = false;
-
-// function createKeyboard(language) {
-//   keyboard.innerHTML = '';
-//   keyboardBtns[language].forEach(row => {
-//     const rowElement = document.createElement('div');
-//     rowElement.classList.add('keyboard-row');
-//     row.forEach(key => {
-//       const keyElement = document.createElement('button');
-//       keyElement.classList.add('keyboard-key');
-//       keyElement.textContent = key;
-//       keyElement.addEventListener('click', () => {
-//         handleKeyPress(key);
-//       });
-//       rowElement.appendChild(keyElement);
-//     });
-//     keyboard.appendChild(rowElement);
-//   });
-// }
-
-// 
-
-// function updateKeyboard() {
-//   const keys = keyboard.querySelectorAll('.keyboard-key');
-//   keys.forEach(key => {
-//     const keyText = key.textContent;
-//     if (keyText.length === 1) {
-//       key.textContent = capsLockEnabled ? keyText.toUpperCase() : keyText.toLowerCase();
-//     }
-//   });
-// }
-
-// createKeyboard(currentLanguage);
-
-// document.getElementById('language-switch').addEventListener('click', () => {
-//   currentLanguage = currentLanguage === 'en' ? 'ru' : 'en';
-//   createKeyboard(currentLanguage);
-// });
-
-// document.addEventListener('keydown', event => {
-//   const key = event.key;
-//   const keyElement = keyboard.querySelector(`#${key}`);
-//   if (keyElement) {
-//     keyElement.classList.add('active');
-//     handleKeyPress(key);
-//   }
-// });
-
-// document.addEventListener('keyup', event => {
-//   const key = event.key;
-//   const keyElement = keyboard.querySelector(`#${key}`);
-//   if (keyElement) {
-//     keyElement.classList.remove('active');
-//   }
-// });
