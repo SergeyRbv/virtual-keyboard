@@ -106,9 +106,6 @@ let keyboardBtns = {
   ],
 };
 
-
-
-
 // Создаем TextArea
 const textarea = document.createElement("textarea");
 textarea.classList.add('textarea');
@@ -166,7 +163,6 @@ const toggleLang = () => {
   selectKeyboard();
 };
 
-
 // Создаем блок клавиатуры и блоки кнопок клавиатуры
 const selectKeyboard = () => {
   const keyboard = document.createElement('div');
@@ -221,8 +217,6 @@ const selectKeyboard = () => {
 }
 selectKeyboard();
 
-
-
 // Добавление и удаление класса для клавиш
 const keys = document.querySelectorAll(".key");
 
@@ -233,7 +227,6 @@ const keys = document.querySelectorAll(".key");
 //   //   this.setAttribute('data', 'space')
 //   // }
 // });
-
 
 document.addEventListener('keydown', event => {
   console.log(event.code)
@@ -257,7 +250,6 @@ document.addEventListener('keyup', event => {
 //   document.querySelector('.key[data="' + event.key + '"]').classList.add('active');
 // });
 
-
 // keys.forEach(key => {
 //   key.addEventListener('mousedown', () => {
 //     key.classList.add('active');
@@ -266,6 +258,7 @@ document.addEventListener('keyup', event => {
 //     key.classList.remove('active');
 //   });
 // })
+
 keys.forEach(function (element) {
   element.onclick = function (element) {
     keys.forEach(function (element) {
