@@ -1,0 +1,70 @@
+#keyboard {
+  display: flex;
+  flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5em;
+  border: 2px solid black;
+  padding: 5px;
+  overflow: auto;
+  width: 1200px;
+  margin: auto;
+}
+
+.keyboard-row {
+  display: flex;
+}
+
+.key {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  margin: 3px;
+  padding: 3px;
+  float: left;
+  transition: .3s ease-in-out;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.space {
+	width: 502px;
+}
+
+
+.backspace {
+	width: 149px;
+}
+
+.shift,
+.enter,
+.caps-lock {
+	width: 141px;
+}
+
+.del,
+.tab,
+.ctrl {
+	width: 67px;
+}
+
+
+.active {
+  background-color: grey;
+  transform: scale(.9);
+}
+
+/* Пример CSS-стилей для активной клавиши */
+.key.active {
+  background-color: #ccc;
+  transform: scale(.9);
+}
+
+.clearfix {
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+
